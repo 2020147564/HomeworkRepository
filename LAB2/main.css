@@ -14,6 +14,7 @@ h1 {
 .btn-area {
     display: inline; 
     text-align: center;
+    margin: 10px;
 }
 .btn-area button {
     font-family: 'Do Hyeon', sans-serif;
@@ -23,7 +24,22 @@ h1 {
     background: radial-gradient(rgb(238, 238, 158),rgb(155, 238, 148),rgb(174, 219, 245));
     cursor: pointer;
 }
+#btn {
+    font-family: 'Do Hyeon', sans-serif;
+    width: 200px;
+    height: 50px;
+    font-size: 28px;
+    background: radial-gradient(rgb(238, 238, 158),rgb(155, 238, 148),rgb(174, 219, 245));
+    cursor: pointer;
+    border-radius: 0px;
+}
 #btn-c {
+    font-family: 'Do Hyeon', sans-serif;
+    width: 200px;
+    height: 50px;
+    font-size: 28px;
+    cursor: pointer;
+    border-radius: 0px;
     background: radial-gradient(rgb(236, 133, 133),rgb(238, 142, 158),rgb(238, 6, 6));
 }
 .text {
