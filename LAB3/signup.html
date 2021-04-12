@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>homework</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <h1>Welcome to YoungJun Yun SHOP</h1>
+    <div class="btn-area">
+        <button id="btn-l" type="button" onclick="location.href='login.html'">로그인</button>
+    </div>
+    <div class="btn-area">
+        <button id="btn-s" type="button" onclick="">회원가입</button>
+    </div>
+    <p class="text">개인정보 (필수)</p>
+    <form class = "text"method = "get" autocomplete="on" action="">
+        <p><label>이름: 
+            <input type="text" name = "이름" placeholder="이름을 입력하세요" autofocus required>
+        </label></p>
+        <p><label>생일: 
+            <input type="date" name = "생일" autofocus required>
+        </label></p>
+        <p><label>성별: 
+            <input type="text" name = "성별" placeholder="성별을 입력하세요" autofocus required>
+        </label></p>
+        <p><label>전화번호: 
+            <input type="tel" name = "전화번호" placeholder="(###) ####-####" 
+            pattern = "\(\d{3}\) + \d{4}-\d{4}" required>
+        </label></p>
+        <p><label>Email: 
+            <input type="email" name = "email" placeholder="name@domain.com" autofocus required>
+        </label></p>
+        <p><label>아이디: 
+            <input type="text" name = "id" id = "id" autofocus required>
+        </label></p>
+        <p><label>비밀번호: 
+            <input type="password" name = "pw" id = "pw" autofocus required>
+        </label></p>
+        <p><label>비밀번호 확인: 
+            <input type="password" name = "checkpw" autofocus required>
+        </label></p>
+        <p>
+            <input type="submit" id="btn" value="Signup">
+            <input type="button" id="btn-c" value="Cancel">
+        </p>
+    </form>
+    </div>
+</body>
+</html>
