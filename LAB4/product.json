@@ -1,0 +1,189 @@
+[
+    {
+        "name": "apple",
+        "price": "1400원",
+        "image": "apple.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "banana",
+        "price": "900원",
+        "image": "banana.jpg",
+        "type" : "fruits"
+
+    },
+    {
+        "name": "pineapple",
+        "price": "4200원",
+        "image": "pineapple.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "grape",
+        "price": "1400원",
+        "image": "grape.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "melon",
+        "price": "3000원",
+        "image": "melon.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "waterMelon",
+        "price": "2600원",
+        "image": "watermelon.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "peach",
+        "price": "1900원",
+        "image": "peach.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "orange",
+        "price": "1200원",
+        "image": "orange.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "cherry",
+        "price": "4900원",
+        "image": "cherry.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "guava",
+        "price": "2400원",
+        "image": "guava.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "cranberry",
+        "price": "1780원",
+        "image": "cranberry.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "pear",
+        "price": "1900원",
+        "image": "pear.jpg",
+        "type" : "fruits"
+    },
+    {
+        "name": "lemon",
+        "price": "2000원",
+        "image": "lemon.gif",
+        "type" : "fruits"
+    },
+    {
+        "name": "rasberry",
+        "price": "1800원",
+        "image": "rasberry.gif",
+        "type" : "fruits"
+    },
+    {
+        "name": "strawberry",
+        "price": "3000원",
+        "image": "strawberry.gif",
+        "type" : "fruits"
+    },
+    {
+        "name": "yosoolbong",
+        "price": "7900원",
+        "image": "yosoolbong.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "olaf",
+        "price": "18000원",
+        "image": "olaf.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "helicobtercap",
+        "price": "9800원",
+        "image": "helicobtercap.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "gaeguripocket",
+        "price": "3500원",
+        "image": "gaeguripocket.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "sunglass",
+        "price": "19800원",
+        "image": "sunglass.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "hutgaesu",
+        "price": "1400원",
+        "image": "hutgaesu.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "blanket",
+        "price": "114000원",
+        "image": "blanket.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "tiranodoll",
+        "price": "12000원",
+        "image": "tirano.jpg",
+        "type" : "jabdongsani"
+    },
+    {
+        "name": "chameseul",
+        "price": "1800원",
+        "image": "chameseul.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "classiceseul",
+        "price": "2200원",
+        "image": "classiceseul.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "daesun",
+        "price": "2000원",
+        "image": "daesun.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "jinro",
+        "price": "1800원",
+        "image": "jinro.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "likenew",
+        "price": "1900원",
+        "image": "likenew.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "tastecham",
+        "price": "1700원",
+        "image": "tastecham.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "verysour",
+        "price": "2500원",
+        "image": "verysour.jpg",
+        "type" : "soju"
+    },
+    {
+        "name": "toktok",
+        "price": "1900원",
+        "image": "toktok.jpg",
+        "type" : "soju"
+    }
+]

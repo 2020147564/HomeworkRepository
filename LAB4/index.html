@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+</head>
+<body>
+    <h1>YoungJun`s Market</h1>
+    <nav>
+        <div class="btn-area">
+            <button id="btn-l" type="button" onclick="location.href='index.html'">메인 페이지</button>
+        </div>
+        <div class="btn-area">
+            <button id="btn-l" type="button" onclick="location.href='login.html'">로그인</button>
+        </div>
+        <div class="btn-area">
+            <button id="btn-s" type="button" onclick="location.href='signup.html'">회원가입</button>
+        </div>
+        
+    </nav>
+    <div class="main">
+        <aside id="one">
+            <form>
+                <div>
+                    <label for="category" id="txt">Choose a category:</label>
+                    <select id="category">
+                        <option selected>All</option>
+                        <option>Fruits</option>
+                        <option>Soju</option>
+                        <option>JabDongSani</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="findTerm" id="txt">Enter search term:</label>
+                    <input type="text" id="findTerm">
+                </div>
+                <div>
+                    <button id="submit">Filter results</button>
+                </div>
+            </form>
+
+        </aside>
+        <main id="main"></main>
+        <div id="findscroll">Products</div>
+    </div>
+    <footer>낙서하지 마세요 <br> 쓰레기는 분리수거/ 캔 및 플라스틱은 헹궈서 버려주세요 <br> 음식물은 과방 내에 버리지 마세요 <br> 과방 이용하고 난 후 깨끗하게 치우고 가주세요.</footer>
+    
+    </body>
+    <script>
+        fetch('product.json')
+            .then(response => response.json())
+            .then(json => {
+                initialize(json);
+            }).catch(function (err) {
+                console.log('Fetch problem: ' + err.message);
+            });
+
+        function initialize(products) {
+            const category = document.querySelector('#category');
+            const findTerm = document.querySelector('#findTerm');
+            const findBtn = document.querySelector('#submit');
+            const main = document.querySelector('#main');
+            const findScroll = document.querySelector('#findscroll');
+            
+            let check;
+            var start = 0;
+            var end = 6;
+            var tmp = -1;
+
+            let categoryRecord = category.value; // 카테고리값을 기억해주는 
+            let searchRecord = ''; // 검색값 저장
+
+            let categoryGroup; // 해당하는 카테고리에 맞는 product들 저장해놓는 배열
+            let searchGroup;
+            let displayProducts; // 다음에 표시할 때 나타나는 제품 
+
+
+            displayProducts = products; // 처음에 product.json에 있는 것 모든 제품들 보여주기 전에 assignment
+            updateProducts(); // 맨 처음에 모든 제품들 보여주기
+
+            categoryGroup = []; // 초기화
+            searchGroup = []; // 맨 처음에 보여주고 초기화
+            
+            findBtn.onclick = selectCategory; // 버튼클릭되면 선택되는 카테고리에 대한 거 실행 
+            
+            
+            window.onscroll = () => {
+                
+                if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                    start += 6;
+                    end += 6;
+                    updateProducts();
+                }
+            }
+
+
+            function selectCategory(e) {
+                e.preventDefault();
+
+                categoryGroup = []; 
+                searchGroup = [];
+
+                if (category.value === categoryRecord && findTerm.value.trim() === searchRecord) {
+                    return;
+                } else {
+                    categoryCheck(tmp);
+                    categoryRecord = category.value; 
+                    searchRecord = findTerm.value.trim(); 
+
+                    if (category.value === 'All') {
+                        categoryGroup = products;  
+                        findProduct();
+                    } else {
+                        let inputCategory = category.value.toLowerCase();
+                        for (let i = 0; i < products.length; i++) {
+                            if (products[i].type === inputCategory) {
+                                categoryGroup.push(products[i]); 
+                            }
+                        }
+                        findProduct();
+                    }
+                }
+            }
+            function categoryCheck(tmp) {
+                var num = tmp;
+                if (categoryRecord !== category.value) {
+                    ++tmp;
+                }
+                if (num !== tmp) {
+                    check = true;
+                } 
+                else if (num === tmp) {
+                    check = false;
+                }
+            }
+            function findProduct() {
+                searchGroup = [];
+                if (findTerm.value.trim() === ''){
+                    displayProducts = categoryGroup; 
+                    check = true;
+                    updateProducts();
+                }
+                else {
+                    let inputTerm = findTerm.value.trim();
+                    let lowerCaseSearchTerm = findTerm.value.trim().toLowerCase();
+                    for (let i = 0; i < categoryGroup.length; i++) {
+                        if (categoryGroup[i].name.indexOf(inputTerm) !== -1) {
+                            searchGroup.push(categoryGroup[i]);
+                        }
+                    }
+                    check = true;
+                    displayProducts = searchGroup;
+                    updateProducts();
+                }
+            } // search했을 때 input값이 있으면 그에 해당하는 것을 저장하기 위한 함수
+            function updateProducts() {
+                if (start === '0' || check === true) {
+                    while (main.firstChild) {
+                        main.removeChild(main.firstChild);
+                    }
+                    start = 0;
+                    end = 6;
+                    check = false;
+                }
+                if (displayProducts.length === 0) {
+                    const paragraph = document.createElement('p');
+                    paragraph.textContent = 'No results to display!~!';
+                    main.appendChild(paragraph);
+                } else {
+                    for (let i = start; i < displayProducts.length && i < end; i++) {
+                        takeImage(displayProducts[i]);
+                    }
+                }
+                
+            }
+            function takeImage(products) {
+                let url = "images/" + products.image;
+                fetch(url).then(function (response) {
+                    return response.blob();
+                }).then(function(blob) {
+                    let objectURL = URL.createObjectURL(blob);
+
+                    showProduct(objectURL, products);
+                })
+            }
+            function showProduct(objectURL, product) {
+                const section = document.createElement('section');
+                const heading = document.createElement('h2');
+                const paragraph = document.createElement('p');
+                const image = document.createElement('img');
+                const button = document.createElement('button');
+                
+                section.setAttribute('class', product.type);
+
+                heading.setAttribute('id', 'head');
+
+                paragraph.setAttribute('id', 'para');
+
+                image.setAttribute('id', 'img');
+
+                button.setAttribute('id', 'btnk');
+
+
+                heading.textContent = product.name;
+
+                paragraph.textContent = product.price;
+
+                button.textContent = "click";
+
+                image.src = objectURL;
+                image.alt = product.name;
+                
+                main.appendChild(section);
+                section.appendChild(heading);
+                section.appendChild(paragraph);
+                section.appendChild(image);
+                section.appendChild(button);
+            }
+    }
+    
+    </script>
+
+</html>
